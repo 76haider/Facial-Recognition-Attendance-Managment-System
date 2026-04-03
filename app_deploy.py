@@ -1,19 +1,17 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-import cv2
 import numpy as np
-from PIL import Image
 
 st.set_page_config(page_title="Face Recognition Attendance System", layout="wide")
 
 # Initialize all session state
 if 'students' not in st.session_state:
     st.session_state.students = pd.DataFrame([
-        ['ST001', 'John Doe', 'Computer Science', 'encoded_1', 'john@example.com', '1234567890'],
-        ['ST002', 'Jane Smith', 'Computer Science', 'encoded_2', 'jane@example.com', '1234567891'],
-        ['ST003', 'Mike Johnson', 'Electrical Engineering', 'encoded_3', 'mike@example.com', '1234567892'],
-    ], columns=['Student ID', 'Name', 'Department', 'Face Encoding', 'Email', 'Phone'])
+        ['ST001', 'John Doe', 'Computer Science', 'john@example.com', '1234567890'],
+        ['ST002', 'Jane Smith', 'Computer Science', 'jane@example.com', '1234567891'],
+        ['ST003', 'Mike Johnson', 'Electrical Engineering', 'mike@example.com', '1234567892'],
+    ], columns=['Student ID', 'Name', 'Department', 'Email', 'Phone'])
 
 if 'attendance' not in st.session_state:
     st.session_state.attendance = pd.DataFrame(columns=['Student ID', 'Name', 'Department', 'Date', 'Time'])
@@ -49,7 +47,7 @@ if menu == "🏠 Home":
         st.metric("Total Departments", len(st.session_state.departments))
     with col3:
         today = datetime.now().strftime("%Y-%m-%d")
-        today_count = len(st.session_state.attendance[st.session_state.attendance['Date'] == today])
+        today_count = len(st.session_state.attendance[st.session_state.attendance['Date'] == today]) if len(st.session_state.attendance) > 0 else 0
         st.metric("Today's Attendance", today_count)
     
     st.info("""
@@ -77,7 +75,7 @@ elif menu == "👨‍💼 Admin Login":
                 st.success("✅ Login Successful!")
                 st.rerun()
             else:
-                st.error("❌ Invalid credentials")
+                st.error("❌ Invalid credentials (use admin/admin)")
     else:
         st.success(f"✅ Logged in as Admin")
         
@@ -123,8 +121,8 @@ elif menu == "👨‍💼 Admin Login":
             
             if st.button("📝 Register Student"):
                 if new_student_id and new_name:
-                    new_student = pd.DataFrame([[new_student_id, new_name, new_department, f"encoded_{new_student_id}", new_email, new_phone]],
-                                              columns=['Student ID', 'Name', 'Department', 'Face Encoding', 'Email', 'Phone'])
+                    new_student = pd.DataFrame([[new_student_id, new_name, new_department, new_email, new_phone]],
+                                              columns=['Student ID', 'Name', 'Department', 'Email', 'Phone'])
                     st.session_state.students = pd.concat([st.session_state.students, new_student], ignore_index=True)
                     st.success(f"✅ Student {new_name} registered! ID: {new_student_id}")
                     st.balloons()
@@ -135,11 +133,12 @@ elif menu == "👨‍💼 Admin Login":
             
             # Remove student
             st.write("### Remove Student")
-            student_to_remove = st.selectbox("Select Student to Remove", st.session_state.students['Name'].tolist())
-            if st.button("🗑️ Remove Student", type="secondary"):
-                st.session_state.students = st.session_state.students[st.session_state.students['Name'] != student_to_remove]
-                st.success(f"✅ Student {student_to_remove} removed!")
-                st.rerun()
+            if len(st.session_state.students) > 0:
+                student_to_remove = st.selectbox("Select Student to Remove", st.session_state.students['Name'].tolist())
+                if st.button("🗑️ Remove Student", type="secondary"):
+                    st.session_state.students = st.session_state.students[st.session_state.students['Name'] != student_to_remove]
+                    st.success(f"✅ Student {student_to_remove} removed!")
+                    st.rerun()
         
         # Reports Tab
         with admin_tab3:
@@ -182,31 +181,21 @@ elif menu == "👨‍💼 Admin Login":
             st.session_state.logged_in = False
             st.rerun()
 
-# Give Attendance
+# Give Attendance (No camera - manual selection for cloud)
 elif menu == "📸 Give Attendance":
     st.title("Mark Attendance")
-    st.markdown("Position your face clearly in front of the camera")
+    st.info("📌 **Note:** For cloud deployment, attendance is marked manually. In the local version with webcam, face recognition works automatically.")
     
-    camera_image = st.camera_input("📷 Capture Face", key="attendance_camera")
+    st.subheader("Student Selection")
     
-    if camera_image is not None:
-        # Display captured image
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.image(camera_image, caption="Captured Face", width=300)
+    if len(st.session_state.students) > 0:
+        # Manual student selection (since camera won't work reliably in cloud)
+        selected_student = st.selectbox("Select Student", st.session_state.students['Name'].tolist())
         
-        # Simulate face recognition
-        with col2:
-            st.write("### Recognition Result")
-            
-            # Get list of students for selection (simulating recognition)
-            student_names = st.session_state.students['Name'].tolist()
-            
-            # In real system, this would be automatic. For demo, admin confirms.
-            matched_student = st.selectbox("Matched Student (simulated recognition)", student_names)
-            
-            if st.button("✅ Confirm & Mark Attendance", use_container_width=True):
-                student_data = st.session_state.students[st.session_state.students['Name'] == matched_student].iloc[0]
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("✅ Mark Attendance", use_container_width=True):
+                student_data = st.session_state.students[st.session_state.students['Name'] == selected_student].iloc[0]
                 now = datetime.now()
                 date_str = now.strftime("%Y-%m-%d")
                 time_str = now.strftime("%H:%M:%S")
@@ -215,7 +204,7 @@ elif menu == "📸 Give Attendance":
                 already_marked = st.session_state.attendance[
                     (st.session_state.attendance['Student ID'] == student_data['Student ID']) & 
                     (st.session_state.attendance['Date'] == date_str)
-                ]
+                ] if len(st.session_state.attendance) > 0 else pd.DataFrame()
                 
                 if len(already_marked) == 0:
                     new_entry = pd.DataFrame([[
@@ -227,10 +216,15 @@ elif menu == "📸 Give Attendance":
                     ]], columns=['Student ID', 'Name', 'Department', 'Date', 'Time'])
                     
                     st.session_state.attendance = pd.concat([st.session_state.attendance, new_entry], ignore_index=True)
-                    st.success(f"✅ Attendance marked for {matched_student} at {time_str}")
+                    st.success(f"✅ Attendance marked for {selected_student} at {time_str}")
                     st.balloons()
                 else:
-                    st.warning(f"⚠️ {matched_student} already marked attendance today")
+                    st.warning(f"⚠️ {selected_student} already marked attendance today")
+        
+        with col2:
+            st.metric("Today's Date", datetime.now().strftime("%Y-%m-%d"))
+    else:
+        st.warning("No students registered. Please add students first.")
 
 # Attendance List
 elif menu == "📊 Attendance List":
@@ -257,7 +251,7 @@ elif menu == "📊 Attendance List":
         
         # Download
         csv = filtered_df.to_csv(index=False)
-        st.download_button("📥 Download Full Report", csv, "attendance_report.csv", "text/csv")
+        st.download_button("📥 Download Report", csv, "attendance_report.csv", "text/csv")
         
         # Summary
         st.subheader("📊 Summary")
@@ -265,7 +259,8 @@ elif menu == "📊 Attendance List":
         with col1:
             st.metric("Total Records", len(st.session_state.attendance))
         with col2:
-            st.metric("Today's Records", len(st.session_state.attendance[st.session_state.attendance['Date'] == datetime.now().strftime("%Y-%m-%d")]))
+            today_count = len(st.session_state.attendance[st.session_state.attendance['Date'] == datetime.now().strftime("%Y-%m-%d")])
+            st.metric("Today's Records", today_count)
         with col3:
             st.metric("Unique Students", st.session_state.attendance['Student ID'].nunique())
     else:
@@ -286,9 +281,6 @@ elif menu == "📝 Student Registration":
             department = st.selectbox("Department", st.session_state.departments['Dept Name'].tolist())
             admission_year = st.number_input("Admission Year", min_value=2000, max_value=2030, value=2024)
         
-        st.write("### Capture Your Face for Registration")
-        face_image = st.camera_input("Look straight into camera", key="registration_camera")
-        
         submitted = st.form_submit_button("Submit Registration", use_container_width=True)
         
         if submitted:
@@ -297,8 +289,8 @@ elif menu == "📝 Student Registration":
                 if student_id in st.session_state.students['Student ID'].values:
                     st.error("❌ Student ID already exists!")
                 else:
-                    new_student = pd.DataFrame([[student_id, name, department, f"encoded_{student_id}", email, phone]],
-                                              columns=['Student ID', 'Name', 'Department', 'Face Encoding', 'Email', 'Phone'])
+                    new_student = pd.DataFrame([[student_id, name, department, email, phone]],
+                                              columns=['Student ID', 'Name', 'Department', 'Email', 'Phone'])
                     st.session_state.students = pd.concat([st.session_state.students, new_student], ignore_index=True)
                     st.success(f"✅ Registration successful! Your ID is {student_id}")
                     st.info("📧 A confirmation email would be sent to your registered email (simulated)")

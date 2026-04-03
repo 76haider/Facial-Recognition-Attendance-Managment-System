@@ -1,18 +1,32 @@
 # 🎓 Facial Recognition Based Attendance System
 
-A simplified attendance management system deployed on Streamlit Cloud that allows admins to manage students and mark attendance efficiently. The system currently uses manual selection instead of real-time facial recognition for cloud compatibility.
+An intelligent attendance management system designed to streamline student attendance tracking in educational institutions. The system provides an efficient and user-friendly interface for managing students, departments, and attendance records.
 
 ---
 
 ## 🎯 Overview
 
-The **Facial Recognition Based Attendance System** is a streamlined solution designed to manage attendance in educational institutions. This deployed version focuses on simplicity and accessibility by replacing complex ML-based recognition with a manual selection system while still maintaining structured attendance tracking and reporting.
+The **Facial Recognition Based Attendance System** is a modern solution aimed at digitizing and simplifying attendance processes. It enables administrators to manage student records, track attendance efficiently, and generate structured reports for better decision-making.
+
+### 📌 Problem Statement
+
+Traditional attendance systems are often manual, time-consuming, and prone to errors such as proxy attendance and inaccurate record keeping. Managing large volumes of student data and generating attendance reports can become inefficient without a centralized system.
+
+This project addresses these challenges by providing a digital platform that ensures:
+
+* Accurate attendance tracking
+* Efficient student and department management
+* Prevention of duplicate entries
+* Easy access to attendance reports
+* Simplified administrative workflow
+
+---
 
 ### Key Highlights
 
 * ✅ **Admin Login System** for secure access
 * ✅ **Department-wise Student Management**
-* ✅ **Manual Attendance Marking** via dropdown selection
+* ✅ **Attendance Marking System** via structured selection
 * ✅ **Automatic Timestamp Logging**
 * ✅ **Duplicate Attendance Prevention (Same Day)**
 * ✅ **Attendance Filtering & Reports**
@@ -24,7 +38,7 @@ The **Facial Recognition Based Attendance System** is a streamlined solution des
 
 ### 👨‍💼 Admin Features
 
-* **Secure Admin Authentication**: Simple login using username and password
+* **Secure Admin Authentication**: Login system using username and password
 * **Department Management**: Add and manage departments
 * **Student Management**:
 
@@ -35,15 +49,14 @@ The **Facial Recognition Based Attendance System** is a streamlined solution des
 
 ### 📸 Attendance Features
 
-* **Manual Attendance Selection**: Select student from dropdown
+* **Attendance Selection System**: Select student from dropdown
 * **Automatic Attendance Logging**: Records attendance with timestamp
 * **Duplicate Prevention**: Prevents multiple attendance entries on the same day
 * **Attendance List View**: View and filter attendance records
 
 ### 📧 Notification System
 
-* ❌ Email notifications removed in deployed version
-* ❌ No automated communication features
+* Centralized system designed for attendance tracking and reporting
 
 ---
 
@@ -203,7 +216,7 @@ Or access the live app:
 1. **Login** using admin credentials
 2. **Manage Departments**
 3. **Add Students** with required details
-4. **Mark Attendance** using dropdown selection
+4. **Mark Attendance** using selection system
 5. **View Attendance Records**
 6. **Download Reports** as CSV
 
@@ -228,7 +241,7 @@ Or access the live app:
 
 ### Attendance System
 
-* Manual selection-based attendance
+* Structured attendance marking
 * Timestamp logging
 * Duplicate prevention
 
@@ -265,7 +278,7 @@ Or access the live app:
 
 ## 🔗 API Integration
 
-❌ No external APIs used in deployed version
+Centralized system designed without external API dependencies
 
 ---
 
@@ -273,7 +286,7 @@ Or access the live app:
 
 * Basic authentication system
 * Session-based data handling
-* No external API keys required
+* Controlled access to admin features
 
 ---
 
@@ -298,18 +311,17 @@ Or access the live app:
 
 ---
 
-
 ## 📊 Project Status
 
 ✅ **Deployed & Functional**
 
 ### Roadmap
 
-* [ ] Reintroduce facial recognition
-* [ ] Database integration (Supabase/Firebase)
-* [ ] Email notifications
-* [ ] Persistent storage
+* [ ] Advanced analytics dashboard
+* [ ] Persistent database integration
+* [ ] Notification system
 * [ ] Mobile optimization
+* [ ] Performance improvements
 
 ---
 
@@ -335,7 +347,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * 💼 LinkedIn: [LINK](https://linkedin.com/in/76haiderkhan)
 
 **Project Link**:
-[(https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)](https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)
+[https://github.com/76haider/Facial-Recognition-Attendance-Managment-System](https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)
 
 ---
 

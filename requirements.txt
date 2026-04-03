@@ -1,0 +1,14 @@
+
+
+streamlit
+facenet-pytorch
+torch
+mysql-connector-python
+supabase
+pillow
+gotrue
+qdrant-client
+httpx[http2]
+gspread
+google-auth
+pytz

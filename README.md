@@ -1,22 +1,22 @@
 # 🎓 Facial Recognition Based Attendance System
 
-A comprehensive attendance management system that leverages facial recognition technology to automate student attendance tracking. Built with Streamlit, FaceNet-PyTorch, and integrated with Supabase, Qdrant Vector Database, and Google Sheets for efficient data management.
+A simplified attendance management system deployed on Streamlit Cloud that allows admins to manage students and mark attendance efficiently. The system currently uses manual selection instead of real-time facial recognition for cloud compatibility.
 
 ---
 
 ## 🎯 Overview
 
-The **Facial Recognition Based Attendance System** is an automated solution designed to streamline attendance management in educational institutions. By utilizing advanced facial recognition technology, the system eliminates manual attendance processes, reduces proxy attendance, and provides real-time attendance tracking with comprehensive reporting capabilities.
+The **Facial Recognition Based Attendance System** is a streamlined solution designed to manage attendance in educational institutions. This deployed version focuses on simplicity and accessibility by replacing complex ML-based recognition with a manual selection system while still maintaining structured attendance tracking and reporting.
 
 ### Key Highlights
 
-- ✅ **Real-time Facial Recognition** using FaceNet deep learning model
-- ✅ **Multi-user Admin Panel** for system management
-- ✅ **Department-wise Student Management**
-- ✅ **Automated Email Notifications** for registration and reports
-- ✅ **Google Sheets Integration** for attendance logging
-- ✅ **Vector Database** for fast and accurate face matching
-- ✅ **Comprehensive Reporting** with attendance analytics
+* ✅ **Admin Login System** for secure access
+* ✅ **Department-wise Student Management**
+* ✅ **Manual Attendance Marking** via dropdown selection
+* ✅ **Automatic Timestamp Logging**
+* ✅ **Duplicate Attendance Prevention (Same Day)**
+* ✅ **Attendance Filtering & Reports**
+* ✅ **CSV Export सुविधा** for attendance data
 
 ---
 
@@ -24,100 +24,90 @@ The **Facial Recognition Based Attendance System** is an automated solution desi
 
 ### 👨‍💼 Admin Features
 
-- **Secure Admin Authentication**: Role-based access control with email and password authentication
-- **Department Management**: Add, update, and manage departments with HOD information
-- **Student Management**: 
-  - Add new students with facial data registration
-  - Update student information
-  - Remove students from the system
-  - View student profiles by department
-- **Admin Management**: Add and remove admin users
-- **Attendance Reports**: Generate and email department-wise attendance reports to HODs
+* **Secure Admin Authentication**: Simple login using username and password
+* **Department Management**: Add and manage departments
+* **Student Management**:
+
+  * Add new students with details (name, ID, email, phone, department)
+  * View all registered students
+  * Remove students from the system
+* **Attendance Reports**: Filter attendance by date and department and download as CSV
 
 ### 📸 Attendance Features
 
-- **Live Facial Recognition**: Capture and match faces in real-time
-- **Automatic Attendance Logging**: Records attendance with timestamp to Google Sheets
-- **High Accuracy Matching**: Uses FaceNet embeddings with cosine similarity for precise identification
-- **Duplicate Prevention**: Prevents multiple check-ins on the same day
-- **Attendance List View**: View and filter attendance records
+* **Manual Attendance Selection**: Select student from dropdown
+* **Automatic Attendance Logging**: Records attendance with timestamp
+* **Duplicate Prevention**: Prevents multiple attendance entries on the same day
+* **Attendance List View**: View and filter attendance records
 
 ### 📧 Notification System
 
-- **Registration Emails**: Automatic welcome emails to students upon registration
-- **Report Emails**: Periodic attendance reports sent to department HODs
+* ❌ Email notifications removed in deployed version
+* ❌ No automated communication features
 
 ---
 
 ## 🛠 Technology Stack
 
 ### Frontend
-- **Streamlit**: Web application framework for the user interface
 
-### Machine Learning
-- **FaceNet-PyTorch**: Pre-trained FaceNet model for face embeddings
-- **PyTorch**: Deep learning framework
-- **MTCNN**: Multi-task Cascaded Convolutional Networks for face detection
+* **Streamlit**: Web application framework for UI and deployment
 
-### Databases
-- **Supabase**: Relational database for structured data (students, departments, admins)
-- **Qdrant**: Vector database for storing and querying face embeddings
+### Backend
 
-### Integrations
-- **Google Sheets API**: Real-time attendance logging via gspread
-- **SMTP Email**: Automated email notifications
+* **Python 3.8+**
 
-### Additional Libraries
-- **Pillow (PIL)**: Image processing
-- **Pandas**: Data manipulation and analysis
-- **pytz**: Timezone handling
+### Data Handling
+
+* **Pandas**: Data manipulation and reporting
+* **NumPy**: Numerical operations
+
+### Deployment
+
+* **Streamlit Cloud**: Hosting platform
 
 ---
 
 ## 🏗 System Architecture
 
-|**1. Student Registration**| 
-|------|
+| **1. Student Registration**                                                   |
+| ----------------------------------------------------------------------------- |
 | <img src="IMAGES\01.png" width="1200" height="600" style="object-fit:cover;"> |
 
-|**2. Give Attendance**|
-|------|
-| <img src="IMAGES\02.png" width="1200" height="600" style="object-fit:cover;"> | 
+| **2. Give Attendance**                                                        |
+| ----------------------------------------------------------------------------- |
+| <img src="IMAGES\02.png" width="1200" height="600" style="object-fit:cover;"> |
 
-|**3. Generate Attendance & send to HOD's mail**|
-|------|
-| <img src="IMAGES\03.png" width="1200" height="600" style="object-fit:cover;"> | 
+| **3. Generate Attendance Report**                                             |
+| ----------------------------------------------------------------------------- |
+| <img src="IMAGES\03.png" width="1200" height="600" style="object-fit:cover;"> |
 
 ---
+
 ## 🏗 Database Architecture
 
-|**1. Relational Database**|
-|------|
+| **1. In-Memory Storage (Session State)**                                      |
+| ----------------------------------------------------------------------------- |
 | <img src="IMAGES\04.png" width="1200" height="600" style="object-fit:cover;"> |
 
-
-|**2. Vector Database**|
-|------|
+| **2. No Vector Database (Removed)**                                           |
+| ----------------------------------------------------------------------------- |
 | <img src="IMAGES\06.png" width="1200" height="600" style="object-fit:cover;"> |
 
 ---
-
 
 ## 📦 Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- **Python 3.8+**: [Download Python](https://www.python.org/downloads/)
-- **pip**: Python package installer
-- **Git**: Version control system
-- **Virtual Environment**: venv or conda
+* **Python 3.8+**
+* **pip**
+* **Git**
+* **Virtual Environment (venv or conda)**
 
 ### Required Accounts
 
-1. **Supabase Account**: For MySQL database ([Sign up](https://supabase.com))
-2. **Qdrant Cloud** or Local Instance: For vector database ([Documentation](https://qdrant.tech))
-3. **Google Cloud Console**: For Google Sheets API ([Console](https://console.cloud.google.com))
-4. **SMTP Email Service**: Gmail or other SMTP provider
+* **Streamlit Cloud Account** (for deployment)
 
 ---
 
@@ -126,17 +116,14 @@ Before you begin, ensure you have the following installed:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/facial-recognition-attendance-system.git
-cd facial-recognition-attendance-system
+git clone https://github.com/76haider/Facial-Recognition-Attendance-Managment-System
+cd Facial-Recognition-Attendance-Managment-System
 ```
 
 ### Step 2: Create Virtual Environment
 
 ```bash
-# Using venv
 python -m venv venv
-
-# Activate virtual environment
 
 venv\Scripts\activate       # On Windows
 
@@ -150,160 +137,53 @@ pip install -r requirements.txt
 ```
 
 **Requirements include:**
-- streamlit
-- facenet-pytorch
-- torch
-- supabase
-- pillow
-- gotrue
-- qdrant-client
-- gspread
-- google-auth
-- pytz
+
+* streamlit
+* pandas
+* numpy
 
 ---
 
 ## ⚙️ Configuration
 
-### 1. Database Configuration
+### 1. Application Setup
 
-#### Supabase Setup
+No external database or API setup required.
 
-Create a file `BACKEND/RDB_connection_OP.py` with your Supabase credentials:
+* The system uses **Streamlit session state** for storing:
 
-```python
-import supabase
+  * Students
+  * Departments
+  * Attendance records
 
-SUPABASE_URL = "your_supabase_url"
-SUPABASE_KEY = "your_supabase_anon_key"
+### 2. Admin Credentials
 
-def get_supabase_client():
-    return supabase.create_client(SUPABASE_URL, SUPABASE_KEY)
+```text
+Username: admin
+Password: admin
 ```
-
-#### Qdrant Vector Database Setup
-
-Create a file `BACKEND/VDB_connection_OP.py` with your Qdrant configuration:
-
-```python
-from qdrant_client import QdrantClient
-
-QDRANT_URL = "your_qdrant_url"
-QDRANT_API_KEY = "your_qdrant_api_key"
-
-def get_qdrant_client():
-    return QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
-```
-
-### 2. Google Sheets API Setup
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com)
-2. Create a new project or select an existing one
-3. Enable Google Sheets API
-4. Create service account credentials
-5. Download the JSON key file
-6. Share your Google Sheet with the service account email
-7. Place the JSON file in the `FUNC/` directory and reference it in your code
-
-### 3. Email Configuration
-
-Configure SMTP settings in `FUNC/send_email.py`:
-
-```python
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
-SENDER_EMAIL = "your_email@gmail.com"
-SENDER_PASSWORD = "your_app_password"  # Use app-specific password for Gmail
-```
-
-### 4. Database Tables
-
-Create the following tables in your Supabase database:
-
-**App Controls Table**
-```sql
-CREATE TABLE app_controls (
-    is_registration_open BOOLEAN NOT NULL DEFAULT FALSE
-);
-
-```
-
-**Departments Table:**
-```sql
-CREATE TABLE department (
-    dep_id TEXT PRIMARY KEY,
-    dep_name TEXT NOT NULL,
-    dep_hod TEXT NOT NULL,
-    dep_hod_mail TEXT NOT NULL
-);
-```
-
-**Students Table:**
-```sql
-CREATE TABLE students (
-    s_id TEXT PRIMARY KEY,
-    s_name TEXT NOT NULL,
-    s_mail TEXT UNIQUE NOT NULL,
-    s_phone TEXT NOT NULL,
-    s_address TEXT,
-    dep_id TEXT NOT NULL,
-    s_admissionyear INT NOT NULL,
-    s_dob DATE NOT NULL,
-
-    CONSTRAINT fk_department
-        FOREIGN KEY (dep_id)
-        REFERENCES department(dep_id)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT
-);
-```
-
-
 
 ---
 
 ## 📁 Project Structure
 
 ```
-P14-Facial-Recognition-Based-Attendance-System-main/
+Facial-Recognition-Attendance-Managment-System/
 │
-├── app.py                          # Main Streamlit application entry point
-├── requirements.txt                # Python dependencies
-├── README.md                       # Project documentation
-├── project details.md              # Additional project information
+├── app.py
+├── requirements.txt
+├── README.md
 │
-├── BACKEND/                        # Backend operations and database connections
-│   ├── admin_OP.py                 # Admin authentication and operations
-│   ├── attendance_OP.py            # Attendance logging and identification
-│   ├── department_OP.py            # Department CRUD operations
-│   ├── RDB_connection_OP.py        # Relational database (Supabase) connection
-│   ├── report_OP.py                # Report generation and email dispatch
-│   ├── student_OP.py               # Student CRUD operations
-│   └── VDB_connection_OP.py        # Vector database (Qdrant) connection
+├── UI/
+│   ├── Admin_login.py
+│   ├── Admin_dashboard.py
+│   ├── Add_student.py
+│   ├── Manage_students.py
+│   ├── Attendance.py
+│   └── Reports.py
 │
-├── FUNC/                           # Functional modules and utilities
-│   ├── attendance_gspread.py       # Google Sheets attendance operations
-│   ├── face_embedding_OP.py        # Face detection and embedding generation
-│   ├── g_spread.py                 # General Google Sheets operations
-│   ├── navigation.py               # Page navigation helper
-│   └── send_email.py               # Email notification service
-│
-├── UI/                             # Streamlit UI pages
-│   ├── Home.py                     # Landing page
-│   ├── Admin_login.py              # Admin authentication page
-│   ├── Admin_option.py             # Admin dashboard
-│   ├── Add_new_department.py       # Department creation page
-│   ├── Update_department_info.py   # Department update page
-│   ├── Add_new_student.py          # Student registration page
-│   ├── Update_student_info.py      # Student update page
-│   ├── Remove_student.py           # Student removal page
-│   ├── Give_attendance.py          # Live attendance capture page
-│   ├── Attendance_list.py          # Attendance records viewer
-│   ├── Add_admin.py                # Admin creation page
-│   └── Remove_admin.py             # Admin removal page
-│
-├── LICENSE
-└── IMAGES/                         # Static images and assets
+├── IMAGES/
+└── LICENSE
 ```
 
 ---
@@ -316,154 +196,88 @@ P14-Facial-Recognition-Based-Attendance-System-main/
 streamlit run app.py
 ```
 
-The application will open in your default web browser at `http://localhost:8501`
+Or access the live app:
+
+👉 [https://76haiderkhan-facial-recognition-attendance-managment-system.streamlit.app/](https://76haiderkhan-facial-recognition-attendance-managment-system.streamlit.app/)
+
+---
 
 ### Admin Workflow
 
-1. **Login**: Navigate to Admin Login and enter credentials
-2. **Manage Departments**:
-   - Add new departments with HOD details
-   - Update existing department information
-3. **Manage Students**:
-   - Register new students with facial data 
-   - Update student information
-   - Remove students when needed
-4. **View Attendance**: Check attendance records by date and department
-5. **Generate Reports**: Create and email attendance reports to HODs
+1. **Login** using admin credentials
+2. **Manage Departments**
+3. **Add Students** with required details
+4. **Mark Attendance** using dropdown selection
+5. **View Attendance Records**
+6. **Download Reports** as CSV
+
+---
 
 ### Student Attendance Workflow
 
-1. Navigate to **Give Attendance** page
-2. Allow camera access
-3. Capture live image
-4. System automatically identifies and logs attendance
-5. Confirmation message displayed upon successful check-in
+1. Navigate to **Attendance Page**
+2. Select student from dropdown
+3. Click **Mark Attendance**
+4. Attendance is logged with timestamp
+5. Duplicate entries are prevented
 
 ---
 
 ## 🔑 Key Modules
 
-### Face Embedding Module (`FUNC/face_embedding_OP.py`)
+### Student Management
 
-- Uses **MTCNN** for face detection
-- Generates **512-dimensional embeddings** using FaceNet
-- Handles image preprocessing and normalization
+* Add, view, and delete students
+* Assign students to departments
 
-### Student Operations (`BACKEND/student_OP.py`)
+### Attendance System
 
-- **process_and_upload_students()**: Batch student registration with face embeddings
-- **get_student_by_id()**: Retrieve student information
-- **update_student_info()**: Update student details
-- **find_student_by_embedding()**: Facial recognition matching using Qdrant
-- **delete_student()**: Remove student and associated embeddings
+* Manual selection-based attendance
+* Timestamp logging
+* Duplicate prevention
 
-### Attendance Operations (`BACKEND/attendance_OP.py`)
+### Reporting
 
-- **identify_student_from_image()**: Real-time face recognition
-- **log_attendance_to_sheet()**: Record attendance in Google Sheets
-- Uses **cosine similarity** with threshold for accurate matching
-
-### Report Generation (`BACKEND/report_OP.py`)
-
-- **generate_and_send_reports()**: Create attendance reports with statistics
-- Calculates attendance percentage
-- Sends HTML-formatted emails to department HODs
+* Filter attendance by date and department
+* Export attendance as CSV
 
 ---
 
 ## 💾 Database Schema
 
-### Students Collection (RDB - supabase )
-- Student ID (Primary Key)
-- Name
-- Email
-- Phone no.
-- Address
-- Department ID (Foreign Key)
-- Admision year
-- date od birth
+### Students (Session State)
 
-### Departments (RDB - supabase )
-- Department ID (Primary Key)
-- Department Name
-- HOD Name
-- HOD Email
+* Student ID
+* Name
+* Email
+* Phone
+* Department
 
-### Student Registratio App Control (RDB- supabase )
-- is registration open (Primary Key)
-  
-|**1. Relational Database**|
-|------|
-| <img src="IMAGES\05.png" width="1200" height="600" style="object-fit:cover;"> |
+### Departments
 
+* Department ID
+* Department Name
 
-### Face Embeddings (VDB - Qdrant)
-- Vector ID
-- Student ID (payload)
-- 512-dimensional face embedding vector
-- Metadata (name, department)
+### Attendance Log
 
-|**2. Vector Database**|
-|------|
-| <img src="IMAGES\07.png" width="1200" height="600" style="object-fit:cover;"> |
-
-
-### Attendance Log (Google Sheets)
-- Date
-- Student ID
-- Department ID
-
-|**3. Attendance Log**|
-|------|
-| <img src="IMAGES\21.png" width="1200" height="600" style="object-fit:cover;"> |
+* Date
+* Student ID
+* Department
+* Timestamp
 
 ---
 
 ## 🔗 API Integration
 
-### Supabase REST API
-- Student and department CRUD operations
-- Admin authentication
-
-### Qdrant Vector Search API
-- Face embedding storage
-- Cosine Similarity search for face matching
-
-### Google Sheets API
-- Real-time attendance logging
-- Data retrieval for reports
+❌ No external APIs used in deployed version
 
 ---
 
 ## 🔒 Security
 
-- **Password Hashing**: Admin passwords should be hashed (implement bcrypt)
-- **Environment Variables**: Store sensitive credentials in `.env` file (not in source code)
-- **Session Management**: Streamlit session state for authentication
-- **API Keys**: Secure API keys for external services
-- **Input Validation**: Sanitize all user inputs
-- **HTTPS**: Use HTTPS in production for data transmission
-
-### Recommended .env Structure
-
-```
-# Supabase
-SUPABASE_URL=your_supabase_url
-SUPABASE_KEY=your_supabase_key
-
-# Qdrant
-QDRANT_URL=your_qdrant_url
-QDRANT_API_KEY=your_qdrant_key
-
-# Email
-SMTP_SERVER=smtp.gmail.com
-SMTP_PORT=587
-SENDER_EMAIL=your_email@gmail.com
-SENDER_PASSWORD=your_app_password
-
-# Google Sheets
-GOOGLE_SHEETS_CREDS=path/to/credentials.json
-```
+* Basic authentication system
+* Session-based data handling
+* No external API keys required
 
 ---
 
@@ -471,139 +285,51 @@ GOOGLE_SHEETS_CREDS=path/to/credentials.json
 
 ### Common Issues
 
-**1. Camera Access Denied**
-- Check browser permissions for camera access
-- Ensure HTTPS is used in production
+**1. App Not Loading**
 
-**2. Face Not Detected**
-- Ensure proper lighting conditions
-- Face should be clearly visible and frontal
-- Check if MTCNN model is loaded correctly
+* Check Streamlit Cloud status
+* Restart app
 
-**3. Database Connection Error**
-- Verify database credentials in configuration files
-- Check internet connection
-- Ensure database services are running
+**2. Data Reset Issue**
 
-**4. Import Errors**
-- Ensure all dependencies are installed: `pip install -r requirements.txt`
-- Check Python version compatibility (3.8+)
+* Session state resets on refresh
+* This is expected behavior
 
-**5. Email Not Sending**
-- Verify SMTP credentials
-- Enable "Less secure app access" or use app-specific password for Gmail
-- Check firewall settings
+**3. Import Errors**
 
+* Ensure dependencies are installed
+* Use Python 3.8+
 
 ---
+
 ## 🖼️ Screenshots
 
+*(All screenshots remain same as UI reference)*
 
-
-### **Fig-1 : Home Page**
-|**Landing Page Admin Choose Admin Login and Student Choose Give Attendence Section**|
-|------|
-| <img src="IMAGES\08.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-2 : Admin Login**
-|**Admin login interface for authorized access to administrative privileges.**|
-|------|
-| <img src="IMAGES\09.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-3 : Admin Panel**
-|**Admin panel dashboard providing centralized access to system management features.**|
-|------|
-| <img src="IMAGES\10.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-4 : Student Registration Control**
-|<span style="color: green;"><b>Open Form:</b></span> Enables student registration and stores data in Google Sheets.<br><span style="color: red;"><b>Close Form:</b></span> Disables student registration to prevent new submissions.|
-|------|
-| <img src="IMAGES\11.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-5 : Student data upload to database**
-|**Student information from Google Sheet upload to RDB( Supabase ) and student Face Embedding upload to VDB( Quadrant )**|
-|------|
-| <img src="IMAGES\12.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-6 : Student registration confirmation**
-|**Confirmation email received after successful student registration, including system-generated Student ID (email ID hidden for security purposes)**|
-|------|
-| <img src="IMAGES\13.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-7 : Update student information and face embedding**
-|**Students can update personal information and regenerate face embeddings by uploading three clear images in cases where initial registration images were unclear or face recognition fails**|
-|------|
-| <img src="IMAGES\14.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-8 : Remove student from system**
-|**Admin confirmation interface for permanently deleting a student’s records when the student leaves the institution, including removal of data from RDB (Supabase) and facial embeddings from VDB (Qdrant)**|
-|------|
-| <img src="IMAGES\15.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-9 : Add a new department**
-|**Admin interface for adding a new department by entering department ID, department name, Head of Department (HOD) details, and official email information**|
-|------|
-| <img src="IMAGES\16.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-10 : Update department information**
-|**Admin interface for modifying existing department details, including department name,  Head of Department (HOD) information, and official email address**|
-|------|
-| <img src="IMAGES\22.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-11 : Attendance list and reporting**
-|**Interface for generating attendance reports within a selected date range, calculating effective working days, and automatically sending department-wise reports to the respective HODs via email**|
-|------|
-| <img src="IMAGES\17.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-12 : Attendance report email notification**
-|**Automatically generated attendance report emailed to the respective Head of Department (HOD), including reporting period, total working days, student-wise attendance details, and attendance percentage**|
-|------|
-| <img src="IMAGES\18.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-13 : Face-Recognition based attendance marking**
-|**Student attendance interface using real-time face capture, where attendance can be marked only within a predefined time window configured by college administrators**|
-|------|
-| <img src="IMAGES\19.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-14 : Attendance confirmation before write in attendance-log**
-|**Confirmation interface displayed after successful face recognition, allowing the student to verify their identity before final attendance is logged into the system**|
-|------|
-| <img src="IMAGES\20.png" width="1200" height="600" style="object-fit:cover;"> |
-
-### **Fig-15 : Attendance data storage**
-|**Student attendance records stored in Google Sheets, including date-wise entries with student ID and department ID for further reporting and analysis
-|------|
-| <img src="IMAGES\21.png" width="1200" height="600" style="object-fit:cover;"> |
+[Keep all existing image sections unchanged]
 
 ---
 
 ## 📊 Project Status
 
-🚧 **Active Development** - This project is actively maintained and open for contributions.
+✅ **Deployed & Functional (Simplified Version)**
 
 ### Roadmap
 
-- [ ] Multi-language support
-- [✅] Mobile application
-- [ ] Advanced analytics dashboard
-- [ ] Biometric integration
-- [ ] Cloud deployment guide
-- [ ] Docker containerization
-- [ ] API documentation
-- [ ] Unit test coverage
+* [ ] Reintroduce facial recognition
+* [ ] Database integration (Supabase/Firebase)
+* [ ] Email notifications
+* [ ] Persistent storage
+* [ ] Mobile optimization
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **FaceNet**: For the pre-trained facial recognition model
-- **Streamlit**: For the amazing web framework
-- **Qdrant**: For the efficient vector database
-- **Supabase**: For the database infrastructure
-- **Google**: For Sheets API integration
+* **Streamlit**: For the web framework
+* **Python Community**: For open-source libraries
 
 ---
-
 
 ## 📄 License
 
@@ -611,16 +337,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-
 ## 📧 Contact
 
 **Project Maintainer**: [Haider Khan]
 
-- 📧 Email: [Mail](haiderkhaan0800@gmail.com)
-- 🐙 GitHub: [Link](https://github.com/76haider)
-- 💼 LinkedIn: [Link](https://linkedin.com/in/76haiderkhan )
+* 📧 Email: [haiderkhaan0800@gmail.com](mailto:haiderkhaan0800@gmail.com)
+* 🐙 GitHub: [https://github.com/76haider](https://github.com/76haider)
+* 💼 LinkedIn: [https://linkedin.com/in/76haiderkhan](https://linkedin.com/in/76haiderkhan)
 
-**Project Link**: [https://github.com/yourusername/facial-recognition-attendance-system](https://github.com/yourusername/facial-recognition-attendance-system)
+**Project Link**:
+[https://github.com/76haider/Facial-Recognition-Attendance-Managment-System](https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)
 
 ---
 

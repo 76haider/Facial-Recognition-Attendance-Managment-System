@@ -16,7 +16,7 @@ The **Facial Recognition Based Attendance System** is a streamlined solution des
 * ✅ **Automatic Timestamp Logging**
 * ✅ **Duplicate Attendance Prevention (Same Day)**
 * ✅ **Attendance Filtering & Reports**
-* ✅ **CSV Export सुविधा** for attendance data
+* ✅ **CSV Export** for attendance data
 
 ---
 
@@ -298,17 +298,10 @@ Or access the live app:
 
 ---
 
-## 🖼️ Screenshots
-
-*(All screenshots remain same as UI reference)*
-
-[Keep all existing image sections unchanged]
-
----
 
 ## 📊 Project Status
 
-✅ **Deployed & Functional (Simplified Version)**
+✅ **Deployed & Functional**
 
 ### Roadmap
 
@@ -337,12 +330,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Project Maintainer**: [Haider Khan]
 
-* 📧 Email: [haiderkhaan0800@gmail.com](mailto:haiderkhaan0800@gmail.com)
-* 🐙 GitHub: [https://github.com/76haider](https://github.com/76haider)
-* 💼 LinkedIn: [https://linkedin.com/in/76haiderkhan](https://linkedin.com/in/76haiderkhan)
+* 📧 Email: [EMAIL](mailto:haiderkhaan0800@gmail.com)
+* 🐙 GitHub: [LINK](https://github.com/76haider)
+* 💼 LinkedIn: [LINK](https://linkedin.com/in/76haiderkhan)
 
 **Project Link**:
-[https://github.com/76haider/Facial-Recognition-Attendance-Managment-System](https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)
+[CLICK](https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)
 
 ---
 

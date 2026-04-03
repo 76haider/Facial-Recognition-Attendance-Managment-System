@@ -90,10 +90,6 @@ The **Facial Recognition Based Attendance System** is a streamlined solution des
 | ----------------------------------------------------------------------------- |
 | <img src="IMAGES\04.png" width="1200" height="600" style="object-fit:cover;"> |
 
-| **2. No Vector Database (Removed)**                                           |
-| ----------------------------------------------------------------------------- |
-| <img src="IMAGES\06.png" width="1200" height="600" style="object-fit:cover;"> |
-
 ---
 
 ## 📦 Prerequisites

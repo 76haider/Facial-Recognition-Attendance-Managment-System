@@ -614,11 +614,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-**Project Maintainer**: [Rupam Mondal]
+**Project Maintainer**: [Haider Khan]
 
-- 📧 Email: [Mail](rupam.mondal2022@uem.edu.in)
-- 🐙 GitHub: [Link](https://github.com/RpM-999)
-- 💼 LinkedIn: [Link](https://linkedin.com/in/rupam-mondal-data-science )
+- 📧 Email: [Mail](haiderkhaan0800@gmail.com)
+- 🐙 GitHub: [Link](https://github.com/76haider)
+- 💼 LinkedIn: [Link](https://linkedin.com/in/76haiderkhan )
 
 **Project Link**: [https://github.com/yourusername/facial-recognition-attendance-system](https://github.com/yourusername/facial-recognition-attendance-system)
 
@@ -628,4 +628,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-*Last Updated: December 2025*
+*Last Updated: April 2026*

@@ -335,7 +335,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * 💼 LinkedIn: [LINK](https://linkedin.com/in/76haiderkhan)
 
 **Project Link**:
-(https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)](https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)
+[(https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)](https://github.com/76haider/Facial-Recognition-Attendance-Managment-System)
 
 ---
 
